@@ -16,13 +16,12 @@ const fetchVideos = async () => {
 				const video = item?.items?.snippet
 				const stats = item?.items?.statistics
 
-				return `
-		<div class="video-card">
+				return `		<a href="https://www.youtube.com/watch?v=${item?.items?.id}" target="_blank" class="video-card">
 			<img src="${video?.thumbnails?.high?.url || ''}" />
-			<h3>${video?.title || 'No title'}</h3>
-			<p>${video?.channelTitle || 'Unknown Channel'}</p>
-			<p>${stats?.viewCount || 0} views</p>
-		</div>
+		<h3>${video?.title || 'No title'}</h3>
+		<p>${video?.channelTitle || 'Unknown Channel'}</p>
+		<p>${stats?.viewCount || 0} views</p>
+	</a>
 	`
 			})
 			.join('')
